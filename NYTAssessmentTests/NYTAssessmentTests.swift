@@ -6,31 +6,45 @@
 //
 
 import XCTest
+import Combine
+import NetworkingLayer
+
 @testable import NYTAssessment
 
 final class NYTAssessmentTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var sut: HomeViewModel!
+    var subscriptions = Set<AnyCancellable>()
+    
+    override func setUp() {
+        super.setUp()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        subscriptions = []
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testLoadingPopularArticles() throws {
+        //Arrange
+        let networkRequestable = NetworkingLayerRequestable(requestTimeOut: 60)
+        let mock = MockNetworkingService(networkRequest: networkRequestable)
+        let request = MostPopularArticleRequest(section: .all, period: .week)
+        
+        //Expectation
+        let promise = expectation(description: "Loading popular articles")
+        
+        //Result
+        mock.getMostPopularArticlesService(request: request).sink { (completion) in
+//            XCTFail()
+        } receiveValue: { (response) in
+            if let articles = response.results, !articles.isEmpty {
+                promise.fulfill()
+            }
+            
+        }.store(in: &subscriptions)
+        
+        wait(for: [promise], timeout: 60)
+        
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }
