@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleImageCollectionViewCell" id="t3c-F4-mjb" customClass="ArticleImageCollectionViewCell" customModule="NYTAssessment" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="210"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Pdf-vR-BtY">
+                <rect key="frame" x="0.0" y="0.0" width="322" height="210"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RM8-EY-frh">
+                        <rect key="frame" x="0.0" y="0.0" width="322" height="200"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dc4-Pi-id3">
+                                <rect key="frame" x="0.0" y="0.0" width="322" height="200"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="L8B-LB-Bzf"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RM8-EY-frh" firstAttribute="top" secondItem="Pdf-vR-BtY" secondAttribute="top" id="5pY-F0-ifj"/>
+                    <constraint firstItem="RM8-EY-frh" firstAttribute="leading" secondItem="Pdf-vR-BtY" secondAttribute="leading" id="Vvc-Mc-OAm"/>
+                    <constraint firstAttribute="bottom" secondItem="RM8-EY-frh" secondAttribute="bottom" id="bot-QB-XRY"/>
+                    <constraint firstAttribute="trailing" secondItem="RM8-EY-frh" secondAttribute="trailing" id="qgR-D2-69T"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="322" height="210"/>
+            <connections>
+                <outlet property="imageView" destination="dc4-Pi-id3" id="zI2-0c-SHL"/>
+            </connections>
+            <point key="canvasLocation" x="-146.56488549618319" y="83.098591549295776"/>
+        </collectionViewCell>
+    </objects>
+</document>
